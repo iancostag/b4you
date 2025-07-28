@@ -8,7 +8,7 @@ function authMiddleware(req, res, next) {
   if (!token) return res.status(401).json({ error: 'Token ausente' });
 
   jwt.verify(token, SECRET, (err, user) => {
-    if (err) return res.status(403).json({ error: 'Token inválido ou expirado' });
+    if (err) return res.status(403).json({ error: 'Você não tem acesso a essa página' });
     req.user = user;
     next();
   });
